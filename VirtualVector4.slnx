@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
   <Folder Name="/VirtualVect/">
     <File Path="Extension1/WebApp/index.html" />
     <Project Path="Extension1/VirtualVector.csproj" Id="f3455d25-5c22-4356-87f6-129722299e1f">
