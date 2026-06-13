@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="Globals">
+    <WebView2UseWinRT>False</WebView2UseWinRT>
+    <WebView2EnableCsWinRTProjection>True</WebView2EnableCsWinRTProjection>
+    <WebView2UseDispatchAdapter>False</WebView2UseDispatchAdapter>
+    <WebView2DispatchAdapterUseJavaScriptCase>True</WebView2DispatchAdapterUseJavaScriptCase>
+    <WV2WinRTRequireAllowForWebAttribute>True</WV2WinRTRequireAllowForWebAttribute>
+    <WV2WinRTWrapWebViewTypes>True</WV2WinRTWrapWebViewTypes>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <CreateVsixContainer>true</CreateVsixContainer>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+	  <RootNamespace>VirtualVector</RootNamespace>
+	  <UseCodebase>true</UseCodebase>
+	  <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
+	  <CopyBuildOutputToOutputDirectory>true</CopyBuildOutputToOutputDirectory>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<!-- Ensure VirtualVector2 builds first -->
+		<ProjectReference Include="../Extension1/VirtualVector.csproj">
+			<ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+			<SkipGetTargetFrameworkProperties>true</SkipGetTargetFrameworkProperties>
+		</ProjectReference>
+	</ItemGroup>
+  <ItemGroup>
+    <Content Include="ProjectTemplates\VVGuiTemplate.zip">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <PackageReference Include="MessagePack" Version="3.1.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Extensibility" Version="17.14.2098" />
+    <PackageReference Include="Microsoft.VisualStudio.Extensibility.Sdk" Version="17.14.40608" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.VisualStudio.Extensibility.Build" Version="17.14.40608" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4022.49" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>12</LangVersion>
+    <UseWPF>true</UseWPF>
+
+	  <UseCodebase>true</UseCodebase>
+    <VssdkCompatibleExtension>true</VssdkCompatibleExtension>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="ProjectTemplates\VVGuiTemplate.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Remove="VVGuiToolWindowContent.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="index.html" />
+    <Content Include="ProjectTemplates\VVGuiTemplate.zip">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="VVGuiToolWindowContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+	<ItemGroup>
+		<!-- Ensure WebView2 DLLs are copied to output -->
+		<None Update="$(NuGetPackageRoot)microsoft.web.webview2\1.0.4022.49\build\net462\Microsoft.Web.WebView2.Core.dll">
+			<Link>Microsoft.Web.WebView2.Core.dll</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="$(NuGetPackageRoot)microsoft.web.webview2\1.0.4022.49\build\net462\Microsoft.Web.WebView2.Wpf.dll">
+			<Link>Microsoft.Web.WebView2.Wpf.dll</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="WebApp\css\**\*.css">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="WebApp\js\**\*.js">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+
+    <PackageReference Include="Microsoft.VisualStudio.Extensibility" Version="17.14.2098" />
+    <PackageReference Include="Microsoft.VisualStudio.Extensibility.Sdk" Version="17.14.40608" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.VisualStudio.Extensibility.Build" Version="17.14.40608" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.14.40265" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4022.49" />
+  </ItemGroup>
+
+
+	<ItemGroup>
+		<Content Include="WebApp\**\*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+</Project>

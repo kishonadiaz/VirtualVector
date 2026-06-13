@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "VirtualVector4": {
+      "commandName": "Project",
+      "commandLineArgs": "/rootsuffix",
+      "jsWebView2Debugging": true
+    }
+  }
+}
