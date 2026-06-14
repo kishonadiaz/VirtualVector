@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>VirtualVector Engine</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="importmap">
+        {
+           "imports": {
+             "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.min.js",
+             "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
+           }
+         }
+    </script>
+</head>
+<body>
+    <div id="info">
+        <h2>🎮 VirtualVector Engine</h2>
+        <p>Three.js | WebView2 | Local Development</p>
+    </div>
+    <div id="controls">
+        <span>Scene Controls:</span>
+        <button onclick="rotateCube()">Rotate Cube</button>
+        <button onclick="changeColor()">Change Color</button>
+        <button onclick="resetCamera()">Reset Camera</button>
+    </div>
+
+  
+
+    <script type="module" src="js/main.js">
+    </script>
+</body>
+</html>

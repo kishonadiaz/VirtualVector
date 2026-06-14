@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.Extensibility.UI;
 
-namespace VirtualVector
+namespace VirtualVector.Scene_View
 {
     /// <summary>
     /// A remote user control to use as tool window UI content.

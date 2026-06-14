@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.Extensibility.Commands;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace VirtualVector
+namespace VirtualVector.Scene_View
 {
     /// <summary>
     /// A command for showing a tool window.
@@ -25,7 +25,15 @@ namespace VirtualVector
         public override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken)
         {
             await this.Extensibility.Shell().ShowToolWindowAsync<VVGuiToolWindow>(activate: true, cancellationToken);
-            
+            await this.Extensibility.Shell().ShowToolWindowAsync<Game_View.GameViewToolWindow>(activate: true, cancellationToken);
+
+            await this.Extensibility.Shell().ShowToolWindowAsync<ProjectWindow.ProjectToolWindow>(activate: true, cancellationToken);
+            await this.Extensibility.Shell().ShowToolWindowAsync<HierarchyWindow.HierarchyToolWindow>(activate: true, cancellationToken);
+            await this.Extensibility.Shell().ShowToolWindowAsync<INspectorWindow.InspectorToolWindow>(activate: true, cancellationToken);
+
+
+
+
         }
     }
 }

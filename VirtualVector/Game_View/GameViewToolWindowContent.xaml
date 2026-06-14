@@ -1,0 +1,12 @@
+﻿<DataTemplate xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:vs="http://schemas.microsoft.com/visualstudio/extensibility/2022/xaml"
+              xmlns:styles="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
+              xmlns:GameWindow="clr-namespace:VirtualVector.Game_View;assembly=VirtualVector" 
+              xmlns:colors="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0">
+    <DockPanel >
+        <Border  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden"  Grid.Column="1" Background="#111111" BorderBrush="#333333" BorderThickness="1" Margin="4">
+            <GameWindow:GameView/>
+        </Border>
+    </DockPanel>
+</DataTemplate>

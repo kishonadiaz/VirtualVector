@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="Extension1.270de947-7b51-4980-a534-daa88b57a24d" Version="1.0" Language="en-US" Publisher="Publisher name" />
-        <DisplayName>Extension1</DisplayName>
+        <Identity Id="VirtualVector.270de947-7b51-4980-a534-daa88b57a24d" Version="1.0" Language="en-US" Publisher="Publisher name" />
+        <DisplayName>VirtualVector</DisplayName>
         <Description>VisualStudio.Extensibility Extension with VSSDK Compatibility.</Description>
         <Preview>true</Preview>
     </Metadata>

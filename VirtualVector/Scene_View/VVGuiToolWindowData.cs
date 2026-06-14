@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.Extensibility.UI;
 using System.Runtime.Serialization;
 
-namespace VirtualVector
+namespace VirtualVector.Scene_View
 {
     /// <summary>
     /// ViewModel for the VVGuiToolWindowContent remote user control.

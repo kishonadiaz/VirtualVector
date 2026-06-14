@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.RpcContracts.RemoteUI;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace VirtualVector
+namespace VirtualVector.Scene_View
 {
     /// <summary>
     /// A sample tool window.

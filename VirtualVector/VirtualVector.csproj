@@ -13,16 +13,33 @@
     <None Remove="ProjectTemplates\VVGuiTemplate.zip" />
   </ItemGroup>
   <ItemGroup>
-    <Page Remove="VVGuiToolWindowContent.xaml" />
+    <Page Remove="Game_View\GameViewToolWindowContent.xaml" />
+    <Page Remove="HierarchyWindow\HierarchyToolWindowContent.xaml" />
+    <Page Remove="INspectorWindow\InspectorToolWindowContent.xaml" />
+    <Page Remove="ProjectWindow\ProjectToolWindowContent.xaml" />
+    <Page Remove="Scene_View\VVGuiToolWindowContent.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="index.html" />
-    <Content Include="ProjectTemplates\VVGuiTemplate.zip">
+    <Content Include="Scene_View\index.html" />
+	  <Content Include="Game_View\index.html" />
+	  <Content Include="ProjectTemplates\VVGuiTemplate.zip">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="VVGuiToolWindowContent.xaml">
+    <EmbeddedResource Include="Game_View\GameViewToolWindowContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HierarchyWindow\HierarchyToolWindowContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="INspectorWindow\InspectorToolWindowContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectWindow\ProjectToolWindowContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scene_View\VVGuiToolWindowContent.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -39,14 +56,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="WebApp\css\**\*.css">
+		<Content Include="Scene_View\css\**\*.css">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-		<Content Include="WebApp\js\**\*.js">
+		<Content Include="Scene_View\js\**\*.js">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
-
+	<ItemGroup>
+		<Content Include="Game_View\css\**\*.css">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Game_View\js\**\*.js">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 	<ItemGroup>
 
     <PackageReference Include="Microsoft.VisualStudio.Extensibility" Version="17.14.2098" />
@@ -58,8 +82,11 @@
 
 
 	<ItemGroup>
-		<Content Include="WebApp\**\*">
+		<Content Include="Scene_View\WebApp\**\*">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
+
+
+	
 </Project>

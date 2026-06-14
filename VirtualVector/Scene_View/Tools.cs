@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace VirtualVector
+namespace VirtualVector.Scene_View
 {
     public class Tools:ToolBar
     {

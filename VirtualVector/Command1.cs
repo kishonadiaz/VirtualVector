@@ -3,24 +3,24 @@ using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 using Microsoft.VisualStudio.Extensibility.Shell;
 using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace VirtualVector
+namespace Extension1
 {
     /// <summary>
-    /// testcommand handler.
+    /// Command1 handler.
     /// </summary>
     [VisualStudioContribution]
-    public class testcommand : Command
+    internal class Command1 : Command
     {
         private readonly TraceSource logger;
 
+
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="testcommand"/> class.
+        /// Initializes a new instance of the <see cref="Command1"/> class.
         /// </summary>
         /// <param name="traceSource">Trace source instance to utilize.</param>
-        public testcommand(TraceSource traceSource)
+        public Command1(TraceSource traceSource)
         {
             // This optional TraceSource can be used for logging in the command. You can use dependency injection to access
             // other services here as well.
@@ -28,13 +28,12 @@ namespace VirtualVector
         }
 
         /// <inheritdoc />
-        public override CommandConfiguration CommandConfiguration => new(displayName: "testcommand")
+        public override CommandConfiguration CommandConfiguration => new("%Extension1.Command1.DisplayName%")
         {
             // Use this object initializer to set optional parameters for the command. The required parameter,
-            // displayName, is set above. To localize the displayName, add an entry in .vsextension\string-resources.json
-            // and reference it here by passing "%VirtualVector.testcommand.DisplayName%" as a constructor parameter.
-            //Placements = [CommandPlacement.KnownPlacements.ToolsMenu],
+            // displayName, is set above. DisplayName is localized and references an entry in .vsextension\string-resources.json.
             Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+            Placements = [CommandPlacement.KnownPlacements.ExtensionsMenu],
         };
 
         /// <inheritdoc />
@@ -43,6 +42,7 @@ namespace VirtualVector
             // Use InitializeAsync for any one-time setup or initialization.
             return base.InitializeAsync(cancellationToken);
         }
+
 
         /// <inheritdoc />
         public override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken)
