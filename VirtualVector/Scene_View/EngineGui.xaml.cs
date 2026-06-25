@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VirtualVector.Until;
 using Path = System.IO.Path;
 
 namespace VirtualVector.Scene_View
@@ -27,6 +28,7 @@ namespace VirtualVector.Scene_View
     public partial class EngineGui : UserControl
     {
         Boolean initalized = false;
+        TransferData transferData = new TransferData();
         public EngineGui()
         {
             InitializeComponent();
@@ -59,15 +61,20 @@ namespace VirtualVector.Scene_View
 
                 GameEngine.Source = new Uri("https://gameengine/Scene_View/index.html");
                 initalized = true;
+
+                GameEngine.CoreWebView2.AddHostObjectToScript("Builder", new ThreeJsWrapper.Builder(GameEngine));
+                GameEngine.CoreWebView2.AddHostObjectToScript("Share", new SharedData());
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error initializing WebView2: {ex.Message}");
             }
-        }
+        }  
+
         private async void EngineGui_Loaded(object sender, RoutedEventArgs e)
         {
            await InitializeWebViewAsync();
+            await transferData.TransferFoldersLiveAsync();
           
         }
       

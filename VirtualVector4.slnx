@@ -10,4 +10,5 @@
       <Deploy Solution="Debug|*" />
     </Project>
   </Folder>
+  <Project Path="VirtualVectorGameengine/VirtualVectorGameengine.csproj" Id="a00a9b67-ff3b-4d82-bdcf-966658e653cf" />
 </Solution>

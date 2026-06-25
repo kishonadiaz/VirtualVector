@@ -1,4 +1,5 @@
-﻿using Microsoft.Web.WebView2.Core;
+﻿using Microsoft.VisualStudio.Extensibility.Settings;
+using Microsoft.Web.WebView2.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +51,7 @@ namespace VirtualVector.Game_View
             GameEngine.CoreWebView2.Settings.IsScriptEnabled = true;
             GameEngine.CoreWebView2.Settings.IsWebMessageEnabled = true;
             GameEngine.CoreWebView2.SetVirtualHostNameToFolderMapping("gameengine", new Uri(assemblyDirectory).AbsolutePath, CoreWebView2HostResourceAccessKind.Allow);
-
+            GameEngine.CoreWebView2.AddHostObjectToScript("Share", new SharedData());
             GameEngine.Source = new Uri("https://gameengine/Game_View/index.html");
             initalized = true;
 

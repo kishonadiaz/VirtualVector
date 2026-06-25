@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.ToolWindows;
 using Microsoft.VisualStudio.RpcContracts.RemoteUI;
 
+
 /// <summary>
 /// A sample tool window.
 /// </summary>
@@ -27,6 +28,8 @@ public class GameViewToolWindow : ToolWindow
     {
         // Use this object initializer to set optional parameters for the tool window.
         Placement = ToolWindowPlacement.DocumentWell,
+        AllowAutoCreation = true,
+      
     };
 
     /// <inheritdoc />

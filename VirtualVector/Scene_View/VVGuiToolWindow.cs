@@ -1,35 +1,48 @@
-﻿using Microsoft.VisualStudio.Extensibility;
+﻿using Microsoft.VisualStudio;
+using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 using Microsoft.VisualStudio.Extensibility.ToolWindows;
 using Microsoft.VisualStudio.RpcContracts.RemoteUI;
+using Microsoft.VisualStudio.Shell;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace VirtualVector.Scene_View
 {
     /// <summary>
     /// A sample tool window.
     /// </summary>
-    [VisualStudioContribution]
+    
     public class VVGuiToolWindow : ToolWindow
     {
         private readonly VVGuiToolWindowContent content = new();
-
+        public static Boolean isComplete = false;
         /// <summary>
         /// Initializes a new instance of the <see cref="VVGuiToolWindow" /> class.
         /// </summary>
+        /// 
         public VVGuiToolWindow()
         {
-            this.Title = "My Tool Window";
+            
+            this.Title = "Scene";
             var cusomtone = new CustomCommand(new System.Diagnostics.TraceSource("VVGuiToolWindow"));
-            var c2 = new CustomCommand(new System.Diagnostics.TraceSource("VVGuiToolWindow"));
+            
+            //var c2 = new CustomCommand(new System.Diagnostics.TraceSource("VVGuiToolWindow"));
         }
 
         /// <inheritdoc />
         public override ToolWindowConfiguration ToolWindowConfiguration => new()
         {
+
             // Use this object initializer to set optional parameters for the tool window.
             Placement = ToolWindowPlacement.DocumentWell,
+            AllowAutoCreation = true,
+            VisibleWhen = ActivationConstraint.SolutionState(SolutionState.Exists)
+            //VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, @"\.cs$")
+
+
             //Toolbar = new ToolWindowToolbar(Toolbar)
         };
 
@@ -61,6 +74,7 @@ namespace VirtualVector.Scene_View
         /// <inheritdoc />
         public override Task InitializeAsync(CancellationToken cancellationToken)
         {
+            isComplete = true;
             // Use InitializeAsync for any one-time setup or initialization.
             return Task.CompletedTask;
         }
@@ -68,6 +82,7 @@ namespace VirtualVector.Scene_View
         /// <inheritdoc />
         public override Task<IRemoteUserControl> GetContentAsync(CancellationToken cancellationToken)
         {
+            isComplete = true;
             return Task.FromResult<IRemoteUserControl>(content);
         }
 
@@ -81,3 +96,4 @@ namespace VirtualVector.Scene_View
         }
     }
 }
+

@@ -19,7 +19,7 @@ public class HierarchyToolWindow : ToolWindow
     /// </summary>
     public HierarchyToolWindow()
     {
-        this.Title = "My Tool Window";
+        this.Title = "Hierarchy";
     }
 
     /// <inheritdoc />
@@ -27,6 +27,7 @@ public class HierarchyToolWindow : ToolWindow
     {
         // Use this object initializer to set optional parameters for the tool window.
         Placement = ToolWindowPlacement.DockedTo(new Guid("{b1e99781-ab81-11d0-b683-00aa00a3ee26}")),
+        AllowAutoCreation = true,
     };
 
     /// <inheritdoc />

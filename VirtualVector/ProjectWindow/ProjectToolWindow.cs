@@ -19,7 +19,7 @@ public class ProjectToolWindow : ToolWindow
     /// </summary>
     public ProjectToolWindow()
     {
-        this.Title = "My Tool Window";
+        this.Title = "Project Window";
     }
 
     /// <inheritdoc />
@@ -29,6 +29,8 @@ public class ProjectToolWindow : ToolWindow
         
         // Use this object initializer to set optional parameters for the tool window.
         Placement = ToolWindowPlacement.DockedTo(new Guid("{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}")),
+        AllowAutoCreation = true,
+        DockDirection = Dock.Bottom,
     };
 
     /// <inheritdoc />

@@ -6,25 +6,40 @@
     <LangVersion>12</LangVersion>
     <UseWPF>true</UseWPF>
 
+	
+	  
+	  <AutorunEnabled>true</AutorunEnabled>
 	  <UseCodebase>true</UseCodebase>
     <VssdkCompatibleExtension>true</VssdkCompatibleExtension>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+	  <UseCodebase>true</UseCodebase>
+	
+	  <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
+	  <IncludeDebugSymbolsInVSIXContainer>true</IncludeDebugSymbolsInVSIXContainer>
+	  <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
-  <ItemGroup>
-    <None Remove="ProjectTemplates\VVGuiTemplate.zip" />
-  </ItemGroup>
   <ItemGroup>
     <Page Remove="Game_View\GameViewToolWindowContent.xaml" />
     <Page Remove="HierarchyWindow\HierarchyToolWindowContent.xaml" />
     <Page Remove="INspectorWindow\InspectorToolWindowContent.xaml" />
     <Page Remove="ProjectWindow\ProjectToolWindowContent.xaml" />
+    <Page Remove="Scene_View\Scene_ViewContent.xaml" />
     <Page Remove="Scene_View\VVGuiToolWindowContent.xaml" />
+    <Page Remove="ScriptExloper\Script_ExloporerContent.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scene_View\index.html" />
-	  <Content Include="Game_View\index.html" />
-	  <Content Include="ProjectTemplates\VVGuiTemplate.zip">
+    <Content Include="ProjectTemplates\VirtualVectorGameengine.zip">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="Scene_View\index.html" />
+	  <Content Include="Game_View\index.html" />
+	  <Content Include="INspectorWindow\index.html" />
+	  <Content Include="ProjectWindow\index.html" />
+	  <Content Include="HierarchyWindow\index.html" />
+	  <Content Include="VirtualVectorGameengine.dll">
+	    <IncludeInVSIX>true</IncludeInVSIX>
+	  </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Game_View\GameViewToolWindowContent.xaml">
@@ -39,7 +54,13 @@
     <EmbeddedResource Include="ProjectWindow\ProjectToolWindowContent.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Scene_View\Scene_ViewContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Include="Scene_View\VVGuiToolWindowContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptExloper\Script_ExloporerContent.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -53,8 +74,36 @@
 			<Link>Microsoft.Web.WebView2.Wpf.dll</Link>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="Properties\Settings.settings">
+		  <Generator>SettingsSingleFileGenerator</Generator>
+		  <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
 	</ItemGroup>
 
+	<ItemGroup>
+		<Content Include="HierarchyWindow\css\**\*.css">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="HierarchyWindow\js\**\*.js">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="ProjectWindow\css\**\*.css">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="ProjectWindow\js\**\*.js">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="INspectorWindow\css\**\*.css">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="INspectorWindow\js\**\*.js">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 	<ItemGroup>
 		<Content Include="Scene_View\css\**\*.css">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -73,11 +122,34 @@
 	</ItemGroup>
 	<ItemGroup>
 
+    <PackageReference Include="Community.VisualStudio.Toolkit.17" Version="17.0.551" />
+
+    <PackageReference Include="Community.VisualStudio.Toolkit.Analyzers" Version="1.0.551">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+
+    <PackageReference Include="EnvDTE" Version="17.14.40260" />
+
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.9" />
+
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.AutoActivation" Version="10.7.0" />
+
     <PackageReference Include="Microsoft.VisualStudio.Extensibility" Version="17.14.2098" />
+
+    <PackageReference Include="Microsoft.VisualStudio.Extensibility.Editor.Contracts" Version="17.14.275" />
     <PackageReference Include="Microsoft.VisualStudio.Extensibility.Sdk" Version="17.14.40608" PrivateAssets="all" />
     <PackageReference Include="Microsoft.VisualStudio.Extensibility.Build" Version="17.14.40608" PrivateAssets="all" />
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.14.40265" ExcludeAssets="runtime" />
+		<PackageReference Include="Microsoft.VisualStudio.Shell.Framework" Version="17.14.40264" />
+	
+
+
+    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="17.10.40170" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4022.49" />
+    
   </ItemGroup>
 
 
@@ -88,5 +160,66 @@
 	</ItemGroup>
 
 
+	<ItemGroup>
+	  <None Remove="ProjectTemplates\VirtualVectorGameengine.zip" />
+	  <None Remove="VirtualVectorGameengine.dll" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="VirtualVector.pkgdef">
+			<IncludeInVSIX>true</IncludeInVSIX>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="System.Activities" />
+	  <Reference Include="System.ServiceModel" />
+	  <Reference Include="System.ServiceModel.Activities" />
+	  <Reference Include="VirtualVectorGameengine">
+	    <HintPath>VirtualVectorGameengine.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\VirtualVectorGameengine\VirtualVectorGameengine.csproj">
+			<ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+			<Project>{a00a9b67-ff3b-4d82-bdcf-966658e653cf}</Project>
+			<IncludeInVSIX>true</IncludeInVSIX>
+			<Name>VirtualVectorGameengine</Name>
+			<Aliases>VirtualVectorGameengine</Aliases>
+			<Private>True</Private>
+			<EmbedInteropTypes>False</EmbedInteropTypes>
+			<PrivateAssets>True</PrivateAssets>
+			<!-- This ensures Copy Local is True -->
+			
+		</ProjectReference>
+	</ItemGroup>
 	
+	<ItemGroup>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Properties\Settings.Designer.cs">
+	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Settings.settings</DependentUpon>
+	  </Compile>
+	  <Compile Update="VSPackage.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>VSPackage.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="VSPackage.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>VSPackage.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
 </Project>

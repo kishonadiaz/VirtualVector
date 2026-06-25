@@ -1,4 +1,8 @@
-﻿using Microsoft.VisualStudio.Extensibility.UI;
+﻿using EnvDTE;
+using Microsoft.VisualStudio.Extensibility.UI;
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Events;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
 namespace VirtualVector.Scene_View
@@ -7,10 +11,17 @@ namespace VirtualVector.Scene_View
     /// ViewModel for the VVGuiToolWindowContent remote user control.
     /// </summary>
     [DataContract]
+    //945646de920a5f85
     internal class VVGuiToolWindowData : NotifyPropertyChangedObject
     {
         public VVGuiToolWindowData()
         {
+           
+
+            
+
+
+
             EngineGuiCommand = new AsyncCommand((parameter, clientContext, cancellationToken) =>
             {
                 Text = "Engine GUI opened!";
@@ -22,6 +33,11 @@ namespace VirtualVector.Scene_View
                 Text = $"Hello {parameter as string}!";
                 return Task.CompletedTask;
             });
+        }
+
+        private void _solutionEvents_Opened()
+        {
+           
         }
 
         private string _name = string.Empty;
@@ -43,5 +59,9 @@ namespace VirtualVector.Scene_View
         [DataMember]
         public AsyncCommand HelloCommand { get; }
         public AsyncCommand EngineGuiCommand { get; }
+
+       
+
     }
+    
 }

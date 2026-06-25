@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>VirtualVectorGameengine</Name>
+    <Description>VirtualVectorGameengine</Description>
+    <Icon>VirtualVectorGameengine.ico</Icon>
+    <ProjectType>CSharp</ProjectType>
+    <LanguageTag>csharp</LanguageTag>
+    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <SortOrder>1000</SortOrder>
+    <TemplateID>638f6dfa-8da1-4077-9e81-bb1fabfdddfc</TemplateID>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>VirtualVectorGameengine</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="ProjectTemplate.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+       <ProjectItem ReplaceParameters="true" OpenInEditor="true">Program.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.cs">Startup.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" OpenInEditor="true">Startup.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+	<WizardExtension>
+		<Assembly>VirtualVector, Version=1.0.0.0, Culture=neutral, PublicKeyToken=945646de920a5f85</Assembly>
+		<FullClassName>VirtualVector.VirtualVectorWizard</FullClassName>
+	</WizardExtension>
+</VSTemplate>

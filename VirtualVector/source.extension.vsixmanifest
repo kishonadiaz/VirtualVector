@@ -3,14 +3,14 @@
     <Metadata>
         <Identity Id="VirtualVector.270de947-7b51-4980-a534-daa88b57a24d" Version="1.0" Language="en-US" Publisher="Publisher name" />
         <DisplayName>VirtualVector</DisplayName>
-        <Description>VisualStudio.Extensibility Extension with VSSDK Compatibility.</Description>
+        <Description xml:space="preserve">VisualStudio.Extensibility Extension with VSSDK Compatibility.</Description>
         <Preview>true</Preview>
     </Metadata>
     <Installation ExtensionType="VSSDK+VisualStudio.Extensibility">
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.14,)">
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,18.0)">
             <ProductArchitecture>amd64</ProductArchitecture>
         </InstallationTarget>
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.14,)">
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.14,18.0)">
             <ProductArchitecture>arm64</ProductArchitecture>
         </InstallationTarget>
     </Installation>
@@ -18,9 +18,20 @@
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
     </Dependencies>
     <Assets>
-        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="File" Path="ProjectTemplates" d:TargetPath="ProjectTemplates\VVGuiTemplate.zip" />
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+
+        <Asset Type="Microsoft.VisualStudio.MefComponent"
+           Path="VirtualVector.dll" />
+        <Asset Type="Microsoft.VisualStudio.Assembly"
+               Path="VirtualVector.dll"
+               AssemblyName="VirtualVector" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="File" Path="ProjectTemplates" d:TargetPath="ProjectTemplates\VirtualVectorGameengine.zip" />
+        <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="File" Path="VirtualVectorGameengine.dll" AssemblyName="VirtualVectorGameengine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
     </Assets>
     <Prerequisites>
         <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,)" DisplayName="Visual Studio core editor" />
     </Prerequisites>
+    <AutoLoadExtensions>
+        <AutoLoadExtension>true</AutoLoadExtension>
+    </AutoLoadExtensions>
 </PackageManifest>

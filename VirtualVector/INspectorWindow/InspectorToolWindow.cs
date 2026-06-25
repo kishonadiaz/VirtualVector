@@ -19,7 +19,7 @@ public class InspectorToolWindow : ToolWindow
     /// </summary>
     public InspectorToolWindow()
     {
-        this.Title = "My Tool Window";
+        this.Title = "Inspector";
     }
 
     /// <inheritdoc />
@@ -27,6 +27,7 @@ public class InspectorToolWindow : ToolWindow
     {
         // Use this object initializer to set optional parameters for the tool window.
         Placement = ToolWindowPlacement.DockedTo(new Guid("{3ae79031-e1bc-11d0-8f78-00a0c9110057}")),
+        AllowAutoCreation = true,
     };
 
     /// <inheritdoc />

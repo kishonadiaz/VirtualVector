@@ -3,6 +3,7 @@
 using System.Runtime.Serialization;
 using Microsoft.VisualStudio.Extensibility.UI;
 
+
 /// <summary>
 /// ViewModel for the GameViewToolWindowContent remote user control.
 /// </summary>
