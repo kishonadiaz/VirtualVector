@@ -2,6 +2,7 @@
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { TransformControls } from 'three/addons/controls/TransformControls.js';
 import { select } from 'three/src/nodes/math/ConditionalNode.js';
+import EditorBus from './componets/EditorBus.js';
 
 // var conts = await import("./stage.js");
 
@@ -13,7 +14,6 @@ let share = await chrome.webview.hostObjects.Share;
 
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
-
 
 
 
@@ -288,6 +288,12 @@ function render() {
     renderer.render(scene, camera);
 }
 
+const bus = new EditorBus("SceneView");
+
+bus.onmessage = (msg) => {
+    console.log(msg);
+}
+// bus.postMessage("GameView", scene);
 // Animation loop
 async function animate() {
     requestAnimationFrame(animate);

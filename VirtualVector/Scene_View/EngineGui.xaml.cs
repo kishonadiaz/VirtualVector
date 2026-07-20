@@ -1,10 +1,12 @@
 ﻿using Microsoft.VisualStudio.Extensibility.Settings;
 using Microsoft.Web.WebView2.Core;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,7 +65,17 @@ namespace VirtualVector.Scene_View
                 initalized = true;
 
                 GameEngine.CoreWebView2.AddHostObjectToScript("Builder", new ThreeJsWrapper.Builder(GameEngine));
-                GameEngine.CoreWebView2.AddHostObjectToScript("Share", new SharedData());
+                var shared = new SharedData();
+                GameEngine.CoreWebView2.AddHostObjectToScript("Share",shared );
+                //LocalWebClient.Connect(async (oi) =>
+                //{
+                //    string hh = JsonConvert.SerializeObject(shared);
+                //    var message = Encoding.UTF8.GetBytes(hh);
+                //    await oi.SendAsync(new ArraySegment<byte>(message), WebSocketMessageType.Text, true, CancellationToken.None);
+
+
+
+                //});
             }
             catch (Exception ex)
             {
@@ -75,6 +87,7 @@ namespace VirtualVector.Scene_View
         {
            await InitializeWebViewAsync();
             await transferData.TransferFoldersLiveAsync();
+            await LocalWebsocket.Start();
           
         }
       

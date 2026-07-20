@@ -1,9 +1,22 @@
 ﻿import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import EditorBus from './componets/EditorBus.js';
 var event = new Event("Launch");
 
 let share = await chrome.webview.hostObjects.Share;
 let items = await share.GetAll()
+
+const bus = new EditorBus("GameView");
+
+bus.onmessage = (msg) => {
+    console.log(msg);
+}
+
+// bus.postMessage("GameView")
+
+
+
+
 // setTimeout(async () => {
 //     share = await chrome.webview.hostObjects.Share;
 //     items = await share.GetAll()
@@ -61,8 +74,8 @@ window.addEventListener("message", (e) => {
 async function render() {
     window.requestAnimationFrame(render);
 
-    if (items == undefined) return
-    console.log(items)
+    // if (items == undefined) return
+    // console.log(items)
     
     // console.log(share.GetAll())
     // if(items.length <= 0) return
